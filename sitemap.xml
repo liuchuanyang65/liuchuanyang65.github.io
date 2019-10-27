@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liuchuanyang65.github.io/this/index/</loc>
+    
+    <lastmod>2019-10-27T14:27:05.030Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liuchuanyang65.github.io/dataStructure/index/</loc>
+    
+    <lastmod>2019-09-03T10:00:37.716Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://liuchuanyang65.github.io/interviewQuestion/index/</loc>
     
-    <lastmod>2019-08-29T06:25:51.070Z</lastmod>
+    <lastmod>2019-09-02T02:43:04.228Z</lastmod>
     
   </url>
   
@@ -26,13 +40,6 @@
     <loc>https://liuchuanyang65.github.io/httpStatusCode/index/</loc>
     
     <lastmod>2019-08-27T11:06:29.317Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liuchuanyang65.github.io/this/index/</loc>
-    
-    <lastmod>2019-08-27T11:06:07.369Z</lastmod>
     
   </url>
   

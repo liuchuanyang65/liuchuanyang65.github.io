@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liuchuanyang65.github.io/http/index/</loc>
+    
+    <lastmod>2019-12-02T11:27:12.838Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liuchuanyang65.github.io/other/index/</loc>
+    
+    <lastmod>2019-12-02T11:09:24.438Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://liuchuanyang65.github.io/this/index/</loc>
     
-    <lastmod>2019-10-27T14:35:54.141Z</lastmod>
+    <lastmod>2019-10-28T01:46:32.524Z</lastmod>
     
   </url>
   
@@ -26,13 +40,6 @@
     <loc>https://liuchuanyang65.github.io/createReact/index/</loc>
     
     <lastmod>2019-08-27T11:09:25.401Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liuchuanyang65.github.io/other/index/</loc>
-    
-    <lastmod>2019-08-27T11:06:40.652Z</lastmod>
     
   </url>
   

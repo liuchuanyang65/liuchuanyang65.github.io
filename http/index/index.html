@@ -1,5 +1,183 @@
-<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="学习各种前端知识，htm/css/js、http基本知识、vue/react等前端流行框架"><title>深入理解HTTP | liuchuanyang前端博客</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">深入理解HTTP</h1><a id="logo" href="/.">liuchuanyang前端博客</a><p class="description">前端学习</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">深入理解HTTP</h1><div class="post-meta">Aug 19, 2019<span> | </span><span class="category"><a href="/categories/HTTP/">HTTP</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a class="disqus-comment-count" data-disqus-identifier="http/index/" href="/http/index/#disqus_thread"></a><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">Contents</div></div></div><div class="post-content"><p><img src="http/url.png" alt="浏览器输入URL后HTTP请求返回的完整过程"></p>
-</div><div class="tags"><a href="/tags/HTTP/">HTTP</a></div><div class="post-nav"><a class="pre" href="/interviewQuestion/index/">interviewQuestion</a><a class="next" href="/httpStatusCode/index/">HTTP 状态码</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="学习各种前端知识，htm/css/js、http基本知识、vue/react等前端流行框架"><title>深入理解HTTP | liuchuanyang前端博客</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">深入理解HTTP</h1><a id="logo" href="/.">liuchuanyang前端博客</a><p class="description">前端学习</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">深入理解HTTP</h1><div class="post-meta">Aug 19, 2019<span> | </span><span class="category"><a href="/categories/HTTP/">HTTP</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a class="disqus-comment-count" data-disqus-identifier="http/index/" href="/http/index/#disqus_thread"></a><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">Contenus</div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#深入理解HTTP"><span class="toc-number">1.</span> <span class="toc-text">深入理解HTTP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网络协议基础知识"><span class="toc-number">2.</span> <span class="toc-text">网络协议基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#网络协议分层"><span class="toc-number">2.1.</span> <span class="toc-text">网络协议分层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#经典五层模型"><span class="toc-number">2.1.1.</span> <span class="toc-text">经典五层模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP协议的发展历史"><span class="toc-number">2.2.</span> <span class="toc-text">HTTP协议的发展历史</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-0-9"><span class="toc-number">2.2.1.</span> <span class="toc-text">HTTP/0.9</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-1-0"><span class="toc-number">2.2.2.</span> <span class="toc-text">HTTP/1.0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-1-1"><span class="toc-number">2.2.3.</span> <span class="toc-text">HTTP/1.1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-2-0"><span class="toc-number">2.2.4.</span> <span class="toc-text">HTTP/2.0</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-三次握手"><span class="toc-number">2.3.</span> <span class="toc-text">HTTP 三次握手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP请求报文"><span class="toc-number">2.4.</span> <span class="toc-text">HTTP请求报文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP客户端"><span class="toc-number">2.5.</span> <span class="toc-text">HTTP客户端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CORS跨域限制以及预请求验证"><span class="toc-number">2.6.</span> <span class="toc-text">CORS跨域限制以及预请求验证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CORS跨域允许方法、content-type-否则会进行预请求验证后才发送"><span class="toc-number">2.6.1.</span> <span class="toc-text">CORS跨域允许方法、content-type(否则会进行预请求验证后才发送)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#跨域允许方法"><span class="toc-number">2.6.1.1.</span> <span class="toc-text">跨域允许方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#跨域允许Content-Type"><span class="toc-number">2.6.1.2.</span> <span class="toc-text">跨域允许Content-Type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他限制"><span class="toc-number">2.6.1.3.</span> <span class="toc-text">其他限制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#预请求"><span class="toc-number">2.6.2.</span> <span class="toc-text">预请求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存头Cache-Control"><span class="toc-number">2.7.</span> <span class="toc-text">缓存头Cache-Control</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#可缓存性（哪里地方可缓存）"><span class="toc-number">2.7.1.</span> <span class="toc-text">可缓存性（哪里地方可缓存）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#到期"><span class="toc-number">2.7.2.</span> <span class="toc-text">到期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重新验证"><span class="toc-number">2.7.3.</span> <span class="toc-text">重新验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-number">2.7.4.</span> <span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#资源验证"><span class="toc-number">2.8.</span> <span class="toc-text">资源验证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#验证头"><span class="toc-number">2.8.1.</span> <span class="toc-text">验证头</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cookie-和-session"><span class="toc-number">2.9.</span> <span class="toc-text">cookie 和 session</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie"><span class="toc-number">2.9.1.</span> <span class="toc-text">cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#cookie-1"><span class="toc-number">2.9.1.1.</span> <span class="toc-text">cookie</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cookie属性"><span class="toc-number">2.9.1.2.</span> <span class="toc-text">cookie属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP长连接"><span class="toc-number">2.10.</span> <span class="toc-text">HTTP长连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据协商"><span class="toc-number">2.11.</span> <span class="toc-text">数据协商</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#请求"><span class="toc-number">2.11.1.</span> <span class="toc-text">请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#返回"><span class="toc-number">2.11.2.</span> <span class="toc-text">返回</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redirect"><span class="toc-number">2.12.</span> <span class="toc-text">Redirect</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Location"><span class="toc-number">3.</span> <span class="toc-text">Location</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Host"><span class="toc-number">4.</span> <span class="toc-text">Host</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#指定了新的地址后，再次访问时浏览器会直接将旧地址变成新的路径（浏览器尽量缓存链接301状态），不需要经过服务器指定新的Location"><span class="toc-number">5.</span> <span class="toc-text">指定了新的地址后，再次访问时浏览器会直接将旧地址变成新的路径（浏览器尽量缓存链接301状态），不需要经过服务器指定新的Location</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSP-Content-Security-Policy"><span class="toc-number">5.1.</span> <span class="toc-text">CSP(Content-Security-Policy)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#限制资源获取"><span class="toc-number">6.</span> <span class="toc-text">限制资源获取</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#报告资源获取越权"><span class="toc-number">7.</span> <span class="toc-text">报告资源获取越权</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#default-src-x限制全局"><span class="toc-number">8.</span> <span class="toc-text">default-src x限制全局</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#限定资源类型"><span class="toc-number">9.</span> <span class="toc-text">限定资源类型</span></a></li></ol></div></div><div class="post-content"><h1 id="深入理解HTTP"><a href="#深入理解HTTP" class="headerlink" title="深入理解HTTP"></a>深入理解HTTP</h1><p><img src="/http/index/url.png" alt="浏览器输入URL后HTTP请求返回的完整过程"></p>
+<h1 id="网络协议基础知识"><a href="#网络协议基础知识" class="headerlink" title="网络协议基础知识"></a>网络协议基础知识</h1><h2 id="网络协议分层"><a href="#网络协议分层" class="headerlink" title="网络协议分层"></a>网络协议分层</h2><h3 id="经典五层模型"><a href="#经典五层模型" class="headerlink" title="经典五层模型"></a>经典五层模型</h3><p><img src="/http/index/five_model.png" alt="经典五层模型"></p>
+<ul>
+<li><p>低三层：</p>
+<ul>
+<li>物理层主要作用是定义物理设备如何传输数据</li>
+<li>数据链路层在通信的实体间建立数据链路连接</li>
+<li>网络层为数据在结点之间传输创建逻辑链路</li>
+</ul>
+</li>
+<li><p><strong>传输层：</strong></p>
+<ul>
+<li>向用户提供可靠的端到端（End-to-End）服务</li>
+<li>传输层向高层（即应用层）屏蔽了下层数据通信的细节</li>
+</ul>
+</li>
+<li><p><strong>应用层：</strong></p>
+<ul>
+<li>为应用软件提供了很多服务</li>
+<li>构建于TCP协议之上</li>
+<li>屏蔽网络传输相关细节</li>
+</ul>
+</li>
+</ul>
+<h2 id="HTTP协议的发展历史"><a href="#HTTP协议的发展历史" class="headerlink" title="HTTP协议的发展历史"></a>HTTP协议的发展历史</h2><h3 id="HTTP-0-9"><a href="#HTTP-0-9" class="headerlink" title="HTTP/0.9"></a>HTTP/0.9</h3><ul>
+<li>只有一个命令GET</li>
+<li>没有HEADER等描述数据的信息</li>
+<li>服务器发送完毕，就关闭TCP连接（此处连接与HTTP不同，HTTP请求与TCP连接不是同一个概念， 在一个TCP连接发送很多个HTTP请求，HTTP请求存在于某一个TCP连接）</li>
+</ul>
+<h3 id="HTTP-1-0"><a href="#HTTP-1-0" class="headerlink" title="HTTP/1.0"></a>HTTP/1.0</h3><ul>
+<li>增加了很多命令（POST/PUT）</li>
+</ul>
+<ul>
+<li>增加status code 和 header<ul>
+<li>status code 是用来描述服务端处理某一个请求之后的状态</li>
+<li>header 对应的请求的描述</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>多字符集支持、多部分发送、权限、缓存等</li>
+</ul>
+<h3 id="HTTP-1-1"><a href="#HTTP-1-1" class="headerlink" title="HTTP/1.1"></a>HTTP/1.1</h3><ul>
+<li>持久连接<ul>
+<li>在1.0版本中一个HTTP请求就要在客户端和服务端创建一个TCP连接，在服务端返还完内容后该TCP连接相对应关闭（成本相对较高、消耗、延迟）</li>
+</ul>
+</li>
+<li>pipeline<ul>
+<li>可以在一个连接中发送多个请求，但是响应时按照先后顺序</li>
+</ul>
+</li>
+<li>增加Host 和 其他一些命令<ul>
+<li>在同一个物理服务器中或者同一个集群里面可以部署很多不同的web服务（提高使用效率）</li>
+</ul>
+</li>
+</ul>
+<h3 id="HTTP-2-0"><a href="#HTTP-2-0" class="headerlink" title="HTTP/2.0"></a>HTTP/2.0</h3><ul>
+<li>所用数据以二进制进行传输<ul>
+<li>HTTP 1大部分数据传输是通过字符串，数据分片方式不同 </li>
+</ul>
+</li>
+<li>同一个连接里面发送多个请求不再需要按照顺序来返回处理，可同时返回多个（并行）</li>
+<li>头信息压缩以及推送等提高效率的功能<ul>
+<li>服务端可以主动发起数据传输</li>
+</ul>
+</li>
+</ul>
+<h2 id="HTTP-三次握手"><a href="#HTTP-三次握手" class="headerlink" title="HTTP 三次握手"></a>HTTP 三次握手</h2><p><img src="/http/index/tcp_connect.png" alt="HTTP请求的TCP连接基础"></p>
+<p><img src="/http/index/three.png" alt="TCP三次握手"></p>
+<h2 id="HTTP请求报文"><a href="#HTTP请求报文" class="headerlink" title="HTTP请求报文"></a>HTTP请求报文</h2><h2 id="HTTP客户端"><a href="#HTTP客户端" class="headerlink" title="HTTP客户端"></a>HTTP客户端</h2><h2 id="CORS跨域限制以及预请求验证"><a href="#CORS跨域限制以及预请求验证" class="headerlink" title="CORS跨域限制以及预请求验证"></a>CORS跨域限制以及预请求验证</h2><h3 id="CORS跨域允许方法、content-type-否则会进行预请求验证后才发送"><a href="#CORS跨域允许方法、content-type-否则会进行预请求验证后才发送" class="headerlink" title="CORS跨域允许方法、content-type(否则会进行预请求验证后才发送)"></a>CORS跨域允许方法、content-type(否则会进行预请求验证后才发送)</h3><h4 id="跨域允许方法"><a href="#跨域允许方法" class="headerlink" title="跨域允许方法"></a>跨域允许方法</h4><ul>
+<li>GET</li>
+<li>header</li>
+<li>POST</li>
+</ul>
+<h4 id="跨域允许Content-Type"><a href="#跨域允许Content-Type" class="headerlink" title="跨域允许Content-Type"></a>跨域允许Content-Type</h4><ul>
+<li>text/plain</li>
+<li>multipart/form-data</li>
+<li>application/x-www-form-urlencoded</li>
+</ul>
+<h4 id="其他限制"><a href="#其他限制" class="headerlink" title="其他限制"></a>其他限制</h4><ul>
+<li>请求头限制<ul>
+<li>自定义请求头（不被允许但是可以通过设置Access-Control-Allow-*允许访问）<br>  Allow-Origin: 允许域<br>  Allow-Headers: 允许自定义Header<br>  Allow-Methods: 允许方法<br>  Max-Age: 最大允许访问时间（时间内不会再发送预请求）</li>
+<li>其他请求头限制(cors-safelisted-request-header)[<a href="https://fetch.spec.whatwg.org/]" target="_blank" rel="noopener">https://fetch.spec.whatwg.org/]</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>XMLHttpRequestUpload 对象均没有注册任何时间监听器</li>
+<li>请求中没有使用ReadableStream对象</li>
+</ul>
+<h3 id="预请求"><a href="#预请求" class="headerlink" title="预请求"></a>预请求</h3><h2 id="缓存头Cache-Control"><a href="#缓存头Cache-Control" class="headerlink" title="缓存头Cache-Control"></a>缓存头Cache-Control</h2><h3 id="可缓存性（哪里地方可缓存）"><a href="#可缓存性（哪里地方可缓存）" class="headerlink" title="可缓存性（哪里地方可缓存）"></a>可缓存性（哪里地方可缓存）</h3><ul>
+<li>public<ul>
+<li>均可缓存（包括中间Http代理服务器、发出请求客户端浏览器，http请求经过的地方）</li>
+</ul>
+</li>
+<li>private<ul>
+<li>发出请求的客户端</li>
+</ul>
+</li>
+<li>no-cache<ul>
+<li>可以缓存，但需要服务器验证</li>
+</ul>
+</li>
+</ul>
+<h3 id="到期"><a href="#到期" class="headerlink" title="到期"></a>到期</h3><ul>
+<li><p>max-age = <seconds></seconds></p>
+</li>
+<li><p>s-maxage = <seconds></seconds></p>
+<ul>
+<li>在代理服务器中会覆盖 max-age</li>
+</ul>
+</li>
+<li><p>max-stale = <seconds></seconds></p>
+<ul>
+<li>即便max-age已经过期，但是客户端在max-sale时间内便可使用max-age已过期的缓存，而不用重新去服务器端请求</li>
+</ul>
+</li>
+</ul>
+<h3 id="重新验证"><a href="#重新验证" class="headerlink" title="重新验证"></a>重新验证</h3><ul>
+<li>must-revalidate</li>
+<li>proxy-revalidate<ul>
+<li>缓存服务器重新验证</li>
+</ul>
+</li>
+</ul>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li>no-store<ul>
+<li>彻底不缓存</li>
+</ul>
+</li>
+<li>no-transform</li>
+</ul>
+<h2 id="资源验证"><a href="#资源验证" class="headerlink" title="资源验证"></a>资源验证</h2><p><img src="/http/index/%E8%B5%84%E6%BA%90%E9%AA%8C%E8%AF%81.png" alt="资源验证"></p>
+<h3 id="验证头"><a href="#验证头" class="headerlink" title="验证头"></a>验证头</h3><ul>
+<li>Last-Modified<ul>
+<li>上次修改时间</li>
+<li>配合If-Modified-Since或者If-Unmodified-Since 使用</li>
+<li>对比上次修改时间查看是否需要更新</li>
+</ul>
+</li>
+<li>Etag<ul>
+<li>数据签名</li>
+<li>配合If-Match 或者 If-Non-Match使用</li>
+<li>对比资源签名判断是否使用缓存</li>
+</ul>
+</li>
+</ul>
+<h2 id="cookie-和-session"><a href="#cookie-和-session" class="headerlink" title="cookie 和 session"></a>cookie 和 session</h2><h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><h4 id="cookie-1"><a href="#cookie-1" class="headerlink" title="cookie"></a>cookie</h4><ul>
+<li>通过Set-Cookie设置到浏览器，下次再同域的请求中浏览器会自动携带</li>
+<li>键值对，可以设置多个</li>
+</ul>
+<h4 id="cookie属性"><a href="#cookie属性" class="headerlink" title="cookie属性"></a>cookie属性</h4><ul>
+<li>max-age 和 expires 设置过期时间</li>
+<li>secure 只在https的时候发送</li>
+<li>HttpOnly 无法通过document.cookie 访问（安全性）</li>
+</ul>
+<h2 id="HTTP长连接"><a href="#HTTP长连接" class="headerlink" title="HTTP长连接"></a>HTTP长连接</h2><h2 id="数据协商"><a href="#数据协商" class="headerlink" title="数据协商"></a>数据协商</h2><h3 id="请求"><a href="#请求" class="headerlink" title="请求"></a>请求</h3><ul>
+<li>Accept<ul>
+<li>Accept</li>
+<li>Accept-Encoding: 数据压缩算法gzip, deflate</li>
+<li>Accept-Language</li>
+<li>User-Agent: 判断客户端浏览器环境、设备类型<h3 id="返回"><a href="#返回" class="headerlink" title="返回"></a>返回</h3></li>
+</ul>
+</li>
+<li>Content<ul>
+<li>Content-Type</li>
+<li>Content-Encoding</li>
+<li>Content-Language</li>
+</ul>
+</li>
+</ul>
+<h2 id="Redirect"><a href="#Redirect" class="headerlink" title="Redirect"></a>Redirect</h2><ul>
+<li>返回302，服务端Header设置, 临时跳转<h1 id="Location"><a href="#Location" class="headerlink" title="Location"></a>Location</h1><h1 id="Host"><a href="#Host" class="headerlink" title="Host"></a>Host</h1></li>
+<li>返回301，服务端Header设置, 永久跳转<h1 id="指定了新的地址后，再次访问时浏览器会直接将旧地址变成新的路径（浏览器尽量缓存链接301状态），不需要经过服务器指定新的Location"><a href="#指定了新的地址后，再次访问时浏览器会直接将旧地址变成新的路径（浏览器尽量缓存链接301状态），不需要经过服务器指定新的Location" class="headerlink" title="指定了新的地址后，再次访问时浏览器会直接将旧地址变成新的路径（浏览器尽量缓存链接301状态），不需要经过服务器指定新的Location"></a>指定了新的地址后，再次访问时浏览器会直接将旧地址变成新的路径（浏览器尽量缓存链接301状态），不需要经过服务器指定新的Location</h1></li>
+</ul>
+<h2 id="CSP-Content-Security-Policy"><a href="#CSP-Content-Security-Policy" class="headerlink" title="CSP(Content-Security-Policy)"></a>CSP(Content-Security-Policy)</h2><ul>
+<li>作用<h1 id="限制资源获取"><a href="#限制资源获取" class="headerlink" title="限制资源获取"></a>限制资源获取</h1><h1 id="报告资源获取越权"><a href="#报告资源获取越权" class="headerlink" title="报告资源获取越权"></a>报告资源获取越权</h1></li>
+<li>限制方式<h1 id="default-src-x限制全局"><a href="#default-src-x限制全局" class="headerlink" title="default-src x限制全局"></a>default-src x限制全局</h1><h1 id="限定资源类型"><a href="#限定资源类型" class="headerlink" title="限定资源类型"></a>限定资源类型</h1></li>
+</ul>
+</div><div class="tags"><a href="/tags/HTTP/">HTTP</a></div><div class="post-nav"><a class="pre" href="/Node/Node/">Node入门到实际应用</a><a class="next" href="/httpStatusCode/index/">HTTP 状态码</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
     this.page.url = 'https://liuchuanyang65.github.io/http/index/';
     this.page.identifier = 'http/index/';
     this.page.title = '深入理解HTTP';
@@ -44,4 +222,4 @@ error: function() {
      xhr.ontimeout = function () { xhr.abort(); };
      xhr.send(null);
    });
-</script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="https://liuchuanyang65.github.io"></form></div><div class="widget"><form class="search-form" action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank"><input type="search" name="word" maxlength="20" placeholder="Search"><input type="hidden" name="si" value="https://liuchuanyang65.github.io"><input name="tn" type="hidden" value="bds"><input name="cl" type="hidden" value="3"><input name="ct" type="hidden" value="2097152"><input name="s" type="hidden" value="on"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTTP/">HTTP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/github/">github</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/this/">this</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端面试/">前端面试</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂/">杂</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/React/" style="font-size: 15px;">React</a> <a href="/tags/HTTP/" style="font-size: 15px;">HTTP</a> <a href="/tags/github/" style="font-size: 15px;">github</a> <a href="/tags/前端面试/" style="font-size: 15px;">前端面试</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/this/" style="font-size: 15px;">this</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/dataStructure/index/">dataStructure</a></li><li class="post-list-item"><a class="post-list-link" href="/interviewQuestion/index/">interviewQuestion</a></li><li class="post-list-item"><a class="post-list-link" href="/http/index/">深入理解HTTP</a></li><li class="post-list-item"><a class="post-list-link" href="/httpStatusCode/index/">HTTP 状态码</a></li><li class="post-list-item"><a class="post-list-link" href="/this/index/">this的全面解析</a></li><li class="post-list-item"><a class="post-list-link" href="/traverse/index/">traverse遍历</a></li><li class="post-list-item"><a class="post-list-link" href="/createReact/index/">createReact</a></li><li class="post-list-item"><a class="post-list-link" href="/other/index/">搭建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/hello-world/">hexo的基本命令</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> Recent Comments</i></div><script type="text/javascript" src="//liuchuanyang.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">liuchuanyang前端博客.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+</script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="https://liuchuanyang65.github.io"></form></div><div class="widget"><form class="search-form" action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank"><input type="search" name="word" maxlength="20" placeholder="Search"><input type="hidden" name="si" value="https://liuchuanyang65.github.io"><input name="tn" type="hidden" value="bds"><input name="cl" type="hidden" value="3"><input name="ct" type="hidden" value="2097152"><input name="s" type="hidden" value="on"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Catégories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTTP/">HTTP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/github/">github</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/this/">this</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端面试/">前端面试</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂/">杂</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/HTTP/" style="font-size: 15px;">HTTP</a> <a href="/tags/React/" style="font-size: 15px;">React</a> <a href="/tags/github/" style="font-size: 15px;">github</a> <a href="/tags/前端面试/" style="font-size: 15px;">前端面试</a> <a href="/tags/this/" style="font-size: 15px;">this</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Récent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/Node/">Node</a></li><li class="post-list-item"><a class="post-list-link" href="/dataStructure/index/">dataStructure</a></li><li class="post-list-item"><a class="post-list-link" href="/interviewQuestion/index/">interviewQuestion</a></li><li class="post-list-item"><a class="post-list-link" href="/Node/Node/">Node入门到实际应用</a></li><li class="post-list-item"><a class="post-list-link" href="/http/index/">深入理解HTTP</a></li><li class="post-list-item"><a class="post-list-link" href="/httpStatusCode/index/">HTTP 状态码</a></li><li class="post-list-item"><a class="post-list-link" href="/this/index/">this的全面解析</a></li><li class="post-list-item"><a class="post-list-link" href="/traverse/index/">traverse遍历</a></li><li class="post-list-item"><a class="post-list-link" href="/createReact/index/">createReact</a></li><li class="post-list-item"><a class="post-list-link" href="/other/index/">搭建个人博客</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> Commentaires récents</i></div><script type="text/javascript" src="//liuchuanyang.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> À suivre</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">liuchuanyang前端博客.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

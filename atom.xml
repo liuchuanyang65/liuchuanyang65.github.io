@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuchuanyang65.github.io/"/>
-  <updated>2019-12-12T02:05:34.034Z</updated>
+  <updated>2019-09-03T10:00:37.716Z</updated>
   <id>https://liuchuanyang65.github.io/</id>
   
   <author>
@@ -15,20 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Node</title>
-    <link href="https://liuchuanyang65.github.io/Node/"/>
-    <id>https://liuchuanyang65.github.io/Node/</id>
-    <published>2019-12-12T10:05:34.000Z</published>
-    <updated>2019-12-12T02:05:34.034Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>dataStructure</title>
@@ -75,26 +61,6 @@
   </entry>
   
   <entry>
-    <title>Node入门到实际应用</title>
-    <link href="https://liuchuanyang65.github.io/Node/index/"/>
-    <id>https://liuchuanyang65.github.io/Node/index/</id>
-    <published>2019-08-19T15:10:51.000Z</published>
-    <updated>2019-12-12T02:14:37.204Z</updated>
-    
-    <summary type="html">
-    
-      本篇主要深入理解讲解Node入门到实际应用
-    
-    </summary>
-    
-      <category term="HTTP" scheme="https://liuchuanyang65.github.io/categories/HTTP/"/>
-    
-    
-      <category term="HTTP" scheme="https://liuchuanyang65.github.io/tags/HTTP/"/>
-    
-  </entry>
-  
-  <entry>
     <title>HTTP 状态码</title>
     <link href="https://liuchuanyang65.github.io/httpStatusCode/index/"/>
     <id>https://liuchuanyang65.github.io/httpStatusCode/index/</id>
@@ -135,6 +101,28 @@
     
     
       <category term="HTTP" scheme="https://liuchuanyang65.github.io/tags/HTTP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Node入门到实际应用</title>
+    <link href="https://liuchuanyang65.github.io/Node/index/"/>
+    <id>https://liuchuanyang65.github.io/Node/index/</id>
+    <published>2019-08-19T15:10:51.000Z</published>
+    <updated>2019-12-20T06:33:47.270Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="NodeJS-介绍"><a href="#NodeJS-介绍" class="headerlink" title="NodeJS 介绍"></a>NodeJS 介绍</h1><h2 id="NodeJS-是什么"><a href="#NodeJS-是什么" class="headerlink" title="NodeJS 是什么"></a>NodeJS 是什么</h2><ul><li>Node.js is a <strong>JavaScript runtime</strong> built on Chrome’s V8 (不可以使用JS 全集)</li><li>Node.js uses an event-driveb, <strong>non-blocking I/O</strong> model</li></ul><h3 id="非阻塞I-O"><a href="#非阻塞I-O" class="headerlink" title="非阻塞I/O"></a>非阻塞I/O</h3><ul><li>阻塞：I/O时进程休眠等待I/O 完成后进行下一步</li><li>非阻塞：I/O时函数立即返回， 进程不等待I/O完成 </li></ul><h3 id="事件驱动"><a href="#事件驱动" class="headerlink" title="事件驱动"></a>事件驱动</h3><ul><li>I/O等异步操作结束后的通知</li><li>观察者模式</li></ul><h2 id="为什么偏爱NodeJs"><a href="#为什么偏爱NodeJs" class="headerlink" title="为什么偏爱NodeJs"></a>为什么偏爱NodeJs</h2><ul><li>前端职责范围变大， 统一开发体验</li><li>在处理高并发、I/O 密集场景性能优势明显</li></ul><h3 id="CPU密集-VS-I-O密集"><a href="#CPU密集-VS-I-O密集" class="headerlink" title="CPU密集 VS I/O密集"></a>CPU密集 VS I/O密集</h3><ul><li>CPU密集： 大部分时间在做计算、逻辑判断等CPU动作 （压缩、解压、加密、解密）</li></ul><ul><li>I/O密集： 大部分时间在做存取设备、网络设施的读取操作（文件操作、网络操作、数据库）<ul><li>web常见场景<ul><li>静态资源读取</li><li>数据库操作</li><li>渲染页面</li></ul></li></ul></li></ul><h3 id="高并发应对之道"><a href="#高并发应对之道" class="headerlink" title="高并发应对之道"></a>高并发应对之道</h3><ul><li>增加机器数</li><li>增加每台机器的CPU数——多核（运算能力增强）</li></ul><h3 id="相关基础知识"><a href="#相关基础知识" class="headerlink" title="相关基础知识"></a>相关基础知识</h3><ul><li>进程<ul><li>计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位</li><li>多进程：启动多个进程，多个进程可以一块执行多个任务</li></ul><ul><li>单台CPU同时可以运行多进程的原因<ul><li>类似于动画片原理，以人肉眼感知不到打速度在多个任务（进程）之间来回切换</li></ul></li></ul></li><li>线程<ul><li>进程内一个相对独立、可调度的执行单元，与同属一个进程的线程共享进程的资源</li></ul><ul><li>启动一个进程可以在进程内启动多个线程，多个线程可以一块执行多个任务</li></ul></li><li><a href="https://blog.csdn.net/huaminghui/article/details/78065810" target="_blank" rel="noopener">I/O分类及详细解释</a></li><li>NodeJs 工作模型<br><img src="/Node/index/nodejs.png" alt="NodeJs工作模型"><ul><li>单线程只开一个进程， 一个进程只开一个线程（即一个CPU上只开一个进程， 一个进程里只有一个线程）<ul><li>单线程只是针对主进程，I/O操作系统底层多线程调度（异步操作属于I/O操作系统底层多线程操作和NodeJS没有关系，NodeJS[主进程]发起一个请求，发起请求后交给I/O）</li></ul></li><li>单线程并不是单进程（CPU起几个核起几个进程）</li></ul></li><li>常用场景<ul><li>web场景，高并发、I/O密集</li><li>web server</li><li>本地代码构建</li><li>实用工具开发</li></ul></li></ul><h1 id="调试项目-amp-初始化"><a href="#调试项目-amp-初始化" class="headerlink" title="调试项目&amp;初始化"></a>调试项目&amp;初始化</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul><li>CommonJS (模块规范)<ul><li>每个文件是一个模块，有自己作用域（模块被加载后不会再被加载，而是直接拿模块加载后的结果）</li><li>在模块内部<strong>modeule</strong>变量代表模块本身</li><li><strong>module.exports</strong> 属性代表模块对外接口</li></ul></li><li>global (没有BOM、DOM、window)<ul><li>类似于window</li><li>Buffer(二进制数据处理)、process.console</li><li>timer</li></ul></li><li>process<ul><li>process.nextTick 微任务<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2></li></ul></li><li>Inspector</li><li>VS Code</li></ul><h1 id="基础API"><a href="#基础API" class="headerlink" title="基础API"></a>基础API</h1><h2 id="path"><a href="#path" class="headerlink" title="path"></a>path</h2><ul><li>_dirname, _filename 总是返回文件的绝对路径</li><li>process.cwd() 总是返回执行node命令所在文件夹</li></ul><h2 id><a href="#" class="headerlink" title="./"></a>./</h2><ul><li>在<strong>require</strong>方法中总是相对当前文件所在文件夹</li><li>在其它地方和<strong>process.cwd()</strong>一样，相对node启动文件夹</li></ul><h2 id="Buffer-直接被挂载在global"><a href="#Buffer-直接被挂载在global" class="headerlink" title="Buffer(直接被挂载在global)"></a>Buffer(直接被挂载在global)</h2><ul><li>Buffer 用于处理二进制数据流</li><li>实例类似整数数组，大小固定（默认十六进制， 不能修改长度）</li><li>C++ 代码在V8 堆外分配物理内存</li></ul><h1 id="简单Web-Server"><a href="#简单Web-Server" class="headerlink" title="简单Web Server"></a>简单Web Server</h1><p>使用了<strong>supervisor</strong>监听文件改变<br>使用了<strong>handlebars</strong>模板引擎<br>使用了<strong><a href="http://www.ruanyifeng.com/blog/2019/09/curl-reference.html" target="_blank" rel="noopener">curl</a></strong>模拟请求web服务器(mac 自带)<br>使用<strong>commander或者yargs</strong>获取命令行参数列表</p><h2 id="实现一个静态资源服务器"><a href="#实现一个静态资源服务器" class="headerlink" title="实现一个静态资源服务器"></a>实现一个静态资源服务器</h2><p>执行命令可以把本地的当前目录变成一个静态资源服务器的根目录，可以通过url访问文件（<strong>anywhere</strong>）</p><h3 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h3><ul><li>实现对文件的读写，并在对应的Host:port 打开</li><li>设置npm 配置并上传到npm 生成npm cli </li></ul><h3 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h3><ul><li>匹配模式前/: 代表项目根目录</li><li>匹配模式最后加/: 代表是目录</li><li>匹配模式前加!: 代表取反</li><li>*： 代表任意个字符</li><li>？： 匹配任意一个字符 </li><li>**: 匹配多级目录</li></ul><h3 id="npmignore"><a href="#npmignore" class="headerlink" title=".npmignore"></a>.npmignore</h3><p><a href="https://docs.npmjs.com/misc/developers" target="_blank" rel="noopener">.npmignore详细说明</a></p><h3 id="EditorConfig"><a href="#EditorConfig" class="headerlink" title="EditorConfig"></a><a href="https://editorconfig.org/" target="_blank" rel="noopener">EditorConfig</a></h3><h3 id="对文件设置range"><a href="#对文件设置range" class="headerlink" title="对文件设置range"></a>对文件设置range</h3><ul><li>requestHeader设置<ul><li>range: bytes=[start]-[end]</li></ul></li><li>responseHeader设置<ul><li>Accept-Range: bytes</li><li>Content-Range: bytes start-end/total</li></ul></li></ul><h3 id="缓存header"><a href="#缓存header" class="headerlink" title="缓存header"></a>缓存header</h3><ul><li>responseHeader<ul><li>expirse(返回绝对时间)</li><li>cache-control(返回上次请求的相对时间max-age)</li></ul></li><li>If-Modified-Since / Last-Modified(一对)<ul><li>requestHeader: If-Modified-Since</li><li>responseHeader: Last-Modified</li></ul></li><li>if-None-Match / ETag<br><img src="/Node/index/cache.png" alt="浏览器请求缓存流程"></li></ul><h3 id="语义化版本号-x-y-z"><a href="#语义化版本号-x-y-z" class="headerlink" title="语义化版本号 x.y.z"></a>语义化版本号 x.y.z</h3><ul><li>升级z位： bug fix</li><li>升级y位： 有新增功能并且和之前兼容同时bug fix</li><li>升级x位： 不保证兼容（一般偶数为稳定版）</li><li>x.y.*:<ul><li>如1.2.*：自动更新z位，bug fix为最新 与 ~1.2.0相同</li><li>x/y固定</li></ul></li><li>x.x 如： 2.x 与 ^2.0.0</li></ul><p><strong>linux系统需要给文件添加操作权限</strong></p><h1 id="本地构建"><a href="#本地构建" class="headerlink" title="本地构建"></a>本地构建</h1><ul><li>压缩</li><li>less/scss等构建为css、ES5/ES6构建为浏览器可识别的版本等</li></ul><h1 id="单元测试-amp-发布"><a href="#单元测试-amp-发布" class="headerlink" title="单元测试 &amp; 发布"></a>单元测试 &amp; 发布</h1><h1 id="NodeJS-爬虫示例"><a href="#NodeJS-爬虫示例" class="headerlink" title="NodeJS 爬虫示例"></a>NodeJS 爬虫示例</h1>]]></content>
+    
+    <summary type="html">
+    
+      本篇主要深入理解讲解Node入门到实际应用
+    
+    </summary>
+    
+      <category term="Node" scheme="https://liuchuanyang65.github.io/categories/Node/"/>
+    
+    
+      <category term="Node" scheme="https://liuchuanyang65.github.io/tags/Node/"/>
     
   </entry>
   

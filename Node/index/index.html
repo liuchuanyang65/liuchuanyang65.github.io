@@ -102,7 +102,7 @@
 <li>C++ 代码在V8 堆外分配物理内存</li>
 </ul>
 <h1 id="简单Web-Server"><a href="#简单Web-Server" class="headerlink" title="简单Web Server"></a>简单Web Server</h1><p>使用了<strong>supervisor</strong>监听文件改变<br>使用了<strong>handlebars</strong>模板引擎<br>使用了<strong><a href="http://www.ruanyifeng.com/blog/2019/09/curl-reference.html" target="_blank" rel="noopener">curl</a></strong>模拟请求web服务器(mac 自带)<br>使用<strong>commander或者yargs</strong>获取命令行参数列表</p>
-<h2 id="实现一个静态资源服务器"><a href="#实现一个静态资源服务器" class="headerlink" title="实现一个静态资源服务器"></a>实现一个静态资源服务器</h2><p>执行命令可以把本地的当前目录变成一个静态资源服务器的根目录，可以通过url访问文件（<strong>anywhere</strong>）</p>
+<h2 id="实现一个静态资源服务器"><a href="#实现一个静态资源服务器" class="headerlink" title="实现一个静态资源服务器"></a>实现一个静态资源服务器</h2><p>执行命令可以把本地的当前目录变成一个静态资源服务器的根目录，可以通过url访问文件<a href="https://github.com/liuchuanyang65/anydoor" target="_blank" rel="noopener">anywhere</a></p>
 <h3 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h3><ul>
 <li>实现对文件的读写，并在对应的Host:port 打开</li>
 <li>设置npm 配置并上传到npm 生成npm cli </li>
@@ -152,11 +152,13 @@
 <li>x.x 如： 2.x 与 ^2.0.0</li>
 </ul>
 <p><strong>linux系统需要给文件添加操作权限</strong></p>
-<h1 id="本地构建"><a href="#本地构建" class="headerlink" title="本地构建"></a>本地构建</h1><ul>
+<h1 id="本地构建"><a href="#本地构建" class="headerlink" title="本地构建"></a>本地构建</h1><p><a href="https://github.com/liuchuanyang65/local_building" target="_blank" rel="noopener">超简易版本地构建</a></p>
+<ul>
 <li>压缩</li>
 <li>less/scss等构建为css、ES5/ES6构建为浏览器可识别的版本等</li>
 </ul>
-<h2 id="gulp"><a href="#gulp" class="headerlink" title="gulp"></a>gulp</h2><h2 id="babel"><a href="#babel" class="headerlink" title="babel"></a>babel</h2><h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><h1 id="单元测试-amp-发布"><a href="#单元测试-amp-发布" class="headerlink" title="单元测试 &amp; 发布"></a>单元测试 &amp; 发布</h1><h2 id="断言库"><a href="#断言库" class="headerlink" title="断言库"></a><a href="https://www.chaijs.com/" target="_blank" rel="noopener">断言库</a></h2><h2 id="Mocha"><a href="#Mocha" class="headerlink" title="Mocha"></a>Mocha</h2><h1 id="NodeJS-爬虫示例"><a href="#NodeJS-爬虫示例" class="headerlink" title="NodeJS 爬虫示例"></a>NodeJS 爬虫示例</h1><ul>
+<h2 id="gulp"><a href="#gulp" class="headerlink" title="gulp"></a>gulp</h2><h2 id="babel"><a href="#babel" class="headerlink" title="babel"></a>babel</h2><h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><h1 id="单元测试-amp-发布"><a href="#单元测试-amp-发布" class="headerlink" title="单元测试 &amp; 发布"></a>单元测试 &amp; 发布</h1><h2 id="断言库"><a href="#断言库" class="headerlink" title="断言库"></a><a href="https://www.chaijs.com/" target="_blank" rel="noopener">断言库</a></h2><h2 id="Mocha"><a href="#Mocha" class="headerlink" title="Mocha"></a>Mocha</h2><h1 id="NodeJS-爬虫示例"><a href="#NodeJS-爬虫示例" class="headerlink" title="NodeJS 爬虫示例"></a>NodeJS 爬虫示例</h1><p><a href="https://github.com/liuchuanyang65/headless_crawler" target="_blank" rel="noopener">简单爬取百度图片</a></p>
+<ul>
 <li>按照一定规则自动抓取网络信息的程序（搜索引擎）<ul>
 <li>爬取到HTML</li>
 <li>cheerio 把HTML转换成一个类似JQ的对象（获取信息时可以使用JQ操作）</li>
